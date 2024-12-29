@@ -17,5 +17,7 @@ jobs:
           java-version: '8'
       - name: run test
         run: mvn test
+      - name: mvn install
+        run: mvn clean install -DskipTests
       - name: build with maven
         run: cd jhotdraw-samples/jhotdraw-samples-misc && mvn exec:java "-Dexec.mainClass=org.jhotdraw.samples.svg.Main"
