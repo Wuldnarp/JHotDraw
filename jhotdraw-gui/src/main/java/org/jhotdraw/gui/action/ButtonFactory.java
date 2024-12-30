@@ -1586,8 +1586,7 @@ public class ButtonFactory {
         labels.configureToolBarButton(btn, "attribute.fontStyle.bold");
         btn.setFocusable(false);
         AbstractAction a = new AttributeToggler<>(editor,
-                FONT_BOLD, Boolean.TRUE, Boolean.FALSE,
-                new StyledEditorKit.BoldAction());
+                FONT_BOLD, Boolean.TRUE, Boolean.FALSE);
         a.putValue(ActionUtil.UNDO_PRESENTATION_NAME_KEY, labels.getString("attribute.fontStyle.bold.text"));
         btn.addActionListener(a);
         return btn;
@@ -1611,8 +1610,7 @@ public class ButtonFactory {
         labels.configureToolBarButton(btn, "attribute.fontStyle.italic");
         btn.setFocusable(false);
         AbstractAction a = new AttributeToggler<>(editor,
-                FONT_ITALIC, Boolean.TRUE, Boolean.FALSE,
-                new StyledEditorKit.BoldAction());
+                FONT_ITALIC, Boolean.TRUE, Boolean.FALSE);
         a.putValue(ActionUtil.UNDO_PRESENTATION_NAME_KEY, labels.getString("attribute.fontStyle.italic.text"));
         btn.addActionListener(a);
         return btn;
@@ -1636,8 +1634,7 @@ public class ButtonFactory {
         labels.configureToolBarButton(btn, "attribute.fontStyle.underline");
         btn.setFocusable(false);
         AbstractAction a = new AttributeToggler<>(editor,
-                FONT_UNDERLINE, Boolean.TRUE, Boolean.FALSE,
-                new StyledEditorKit.BoldAction());
+                FONT_UNDERLINE, Boolean.TRUE, Boolean.FALSE);
         a.putValue(ActionUtil.UNDO_PRESENTATION_NAME_KEY, labels.getString("attribute.fontStyle.underline.text"));
         btn.addActionListener(a);
         return btn;
