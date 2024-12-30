@@ -38,7 +38,7 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.plaf.ColorChooserUI;
-import javax.swing.text.StyledEditorKit;
+
 import org.jhotdraw.action.edit.CopyAction;
 import org.jhotdraw.action.edit.CutAction;
 import org.jhotdraw.action.edit.DuplicateAction;
@@ -1537,19 +1537,8 @@ public class ButtonFactory {
     }
 
     public static JPopupButton createFontButton(DrawingEditor editor) {
-        return createFontButton(editor,
-                ResourceBundleUtil.getBundle("org.jhotdraw.draw.Labels"));
-    }
-
-    public static JPopupButton createFontButton(DrawingEditor editor,
-            ResourceBundleUtil labels) {
-        return createFontButton(editor, FONT_FACE, labels);
-    }
-
-    public static JPopupButton createFontButton(DrawingEditor editor,
-            AttributeKey<Font> key,
-            ResourceBundleUtil labels) {
-        return createFontButton(editor, key, labels, new LinkedList<>());
+        return createFontButton(editor, FONT_FACE,
+                ResourceBundleUtil.getBundle("org.jhotdraw.draw.Labels"),new LinkedList<>() );
     }
 
     public static JPopupButton createFontButton(DrawingEditor editor,
@@ -1575,12 +1564,6 @@ public class ButtonFactory {
 
     public static JButton createFontStyleBoldButton(DrawingEditor editor,
             ResourceBundleUtil labels) {
-        return createFontStyleBoldButton(editor,
-                labels, new LinkedList<>());
-    }
-
-    public static JButton createFontStyleBoldButton(DrawingEditor editor,
-            ResourceBundleUtil labels, java.util.List<Disposable> dsp) {
         JButton btn;
         btn = new JButton();
         labels.configureToolBarButton(btn, "attribute.fontStyle.bold");
@@ -1599,12 +1582,6 @@ public class ButtonFactory {
 
     public static JButton createFontStyleItalicButton(DrawingEditor editor,
             ResourceBundleUtil labels) {
-        return createFontStyleItalicButton(editor,
-                labels, new LinkedList<>());
-    }
-
-    public static JButton createFontStyleItalicButton(DrawingEditor editor,
-            ResourceBundleUtil labels, java.util.List<Disposable> dsp) {
         JButton btn;
         btn = new JButton();
         labels.configureToolBarButton(btn, "attribute.fontStyle.italic");
@@ -1623,12 +1600,6 @@ public class ButtonFactory {
 
     public static JButton createFontStyleUnderlineButton(DrawingEditor editor,
             ResourceBundleUtil labels) {
-        return createFontStyleUnderlineButton(editor,
-                labels, new LinkedList<>());
-    }
-
-    public static JButton createFontStyleUnderlineButton(DrawingEditor editor,
-            ResourceBundleUtil labels, java.util.List<Disposable> dsp) {
         JButton btn;
         btn = new JButton();
         labels.configureToolBarButton(btn, "attribute.fontStyle.underline");
