@@ -8,11 +8,9 @@
 package org.jhotdraw.draw.action;
 
 import org.jhotdraw.draw.figure.Figure;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.text.*;
 import javax.swing.undo.*;
 import org.jhotdraw.draw.*;
 import org.jhotdraw.util.ActionUtil;
@@ -35,21 +33,16 @@ public class AttributeToggler<T> extends AbstractAction {
     private AttributeKey<T> key;
     private T value1;
     private T value2;
-    private Action compatibleTextAction;
 
     /**
      * Creates a new instance.
      */
-    public AttributeToggler(DrawingEditor editor, AttributeKey<T> key, T value1, T value2) {
-        this(editor, key, value1, value2, null);
-    }
 
-    public AttributeToggler(DrawingEditor editor, AttributeKey<T> key, T value1, T value2, Action compatibleTextAction) {
+    public AttributeToggler(DrawingEditor editor, AttributeKey<T> key, T value1, T value2) {
         this.editor = editor;
         this.key = key;
         this.value1 = value1;
         this.value2 = value2;
-        this.compatibleTextAction = compatibleTextAction;
     }
 
     public DrawingView getView() {
@@ -62,15 +55,6 @@ public class AttributeToggler<T> extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent evt) {
-        if (compatibleTextAction != null) {
-            Component focusOwner = KeyboardFocusManager.
-                    getCurrentKeyboardFocusManager().
-                    getPermanentFocusOwner();
-            if (focusOwner != null && focusOwner instanceof JTextComponent) {
-                compatibleTextAction.actionPerformed(evt);
-                return;
-            }
-        }
         // Determine the new value
         Iterator<Figure> i = getView().getSelectedFigures().iterator();
         T toggleValue = value1;
@@ -123,7 +107,6 @@ public class AttributeToggler<T> extends AbstractAction {
             public void redo() {
                 super.redo();
                 for (Figure figure : selectedFigures) {
-                    //restoreData.add(figure.getAttributesRestoreData());
                     figure.willChange();
                     figure.set(key, newValue);
                     figure.changed();
