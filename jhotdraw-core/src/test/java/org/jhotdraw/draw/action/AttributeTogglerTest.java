@@ -19,7 +19,7 @@ public class AttributeTogglerTest {
 
     @Before
     public void setUp(){
-         
+
         boolean value1 = false;
         boolean value2 = true;
         Set<Figure> figureSet = new HashSet<Figure>();
@@ -48,5 +48,11 @@ public class AttributeTogglerTest {
 
         //Assert outcome
         Assert.assertTrue((Boolean) instance.getToggleValue());
+
+        //Trigger toggle again
+        instance.actionPerformed(null);
+
+        //Assert outcome again
+        Assert.assertFalse((Boolean) instance.getToggleValue());
     }
 }
