@@ -1,0 +1,76 @@
+{
+  "className": "org.jhotdraw.samples.svg.figures.SVGTextAreaFigureTest",
+  "name": "SVG Text Area Figure",
+  "scenarios": [
+    {
+      "className": "org.jhotdraw.samples.svg.figures.SVGTextAreaFigureTest",
+      "testMethodName": "changeFontToBoldTest",
+      "description": "change font to bold test",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "some text",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "some text"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 17366357,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "activating bold",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "activating bold"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 69650,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "the font is bold",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "the font is bold"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 64060,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 23868677
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 23868677
+    }
+  ],
+  "tagMap": {}
+}
