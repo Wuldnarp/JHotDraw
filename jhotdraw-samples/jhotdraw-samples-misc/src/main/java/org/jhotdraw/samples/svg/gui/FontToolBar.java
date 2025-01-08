@@ -88,12 +88,8 @@ public class FontToolBar extends AbstractToolBar {
 
                 private boolean containsTextHolderFigure(Collection<Figure> figures) {
                     for (Figure f : figures) {
-                        if (f instanceof TextHolderFigure) {
+                        if (f instanceof TextHolderFigure || (f instanceof CompositeFigure && containsTextHolderFigure(((CompositeFigure) f).getChildren()))) {
                             return true;
-                        } else if (f instanceof CompositeFigure) {
-                            if (containsTextHolderFigure(((CompositeFigure) f).getChildren())) {
-                                return true;
-                            }
                         }
                     }
                     return false;
@@ -116,6 +112,7 @@ public class FontToolBar extends AbstractToolBar {
         GridBagConstraints gbc;
         AbstractButton btn;
         String clientPropertyKay = "Palette.Component.segmentPosition";
+        String clientPropertyValue = "first";
 
 
         if (state == 1) {
@@ -138,7 +135,7 @@ public class FontToolBar extends AbstractToolBar {
         faceField.setColumns(faceFieldColumnsNumber);
         faceField.setToolTipText(labels.getString("attribute.font.toolTipText"));
         faceField.setHorizontalAlignment(JAttributeTextField.RIGHT);
-        faceField.putClientProperty(clientPropertyKay, "first");
+        faceField.putClientProperty(clientPropertyKay, clientPropertyValue);
         faceField.setUI((PaletteFormattedTextFieldUI) PaletteFormattedTextFieldUI.createUI(faceField));
         faceField.setHorizontalAlignment(JTextField.LEADING);
         faceField.setFormatterFactory(FontFormatter.createFormatterFactory());
@@ -163,7 +160,7 @@ public class FontToolBar extends AbstractToolBar {
         sizeField.setColumns(1);
         sizeField.setToolTipText(labels.getString("attribute.fontSize.toolTipText"));
         sizeField.setHorizontalAlignment(JAttributeTextField.RIGHT);
-        sizeField.putClientProperty(clientPropertyKay, "first");
+        sizeField.putClientProperty(clientPropertyKay, clientPropertyValue);
         sizeField.setUI((PaletteFormattedTextFieldUI) PaletteFormattedTextFieldUI.createUI(sizeField));
         sizeField.setFormatterFactory(JavaNumberFormatter.createFormatterFactory(0d, 1000d, 1d));
         sizeField.setHorizontalAlignment(JTextField.LEADING);

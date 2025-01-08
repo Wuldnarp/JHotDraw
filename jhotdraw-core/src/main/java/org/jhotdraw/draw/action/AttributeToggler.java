@@ -31,8 +31,8 @@ public class AttributeToggler<T> extends AbstractAction {
     private static final long serialVersionUID = 1L;
     private DrawingEditor editor;
     private AttributeKey<T> key;
-    private T value1;
-    private T value2;
+    private transient T value1;
+    private transient T value2;
 
     /**
      * Creates a new instance.
