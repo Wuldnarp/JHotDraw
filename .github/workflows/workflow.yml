@@ -1,8 +1,7 @@
 name: workflow
 
 on:
-  pull_request:
-    types: [opened, reopened]
+  push
 
 jobs:
   build:
@@ -19,5 +18,3 @@ jobs:
         run: mvn test
       - name: mvn install
         run: mvn clean install -DskipTests
-      - name: build with maven
-        run: cd jhotdraw-samples/jhotdraw-samples-misc && mvn exec:java "-Dexec.mainClass=org.jhotdraw.samples.svg.Main"
