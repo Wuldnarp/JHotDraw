@@ -33,6 +33,7 @@ public class AttributeToggler<T> extends AbstractAction {
     private AttributeKey<T> key;
     private transient T value1;
     private transient T value2;
+    private T toggleValue;
 
     /**
      * Creates a new instance.
@@ -43,21 +44,18 @@ public class AttributeToggler<T> extends AbstractAction {
         this.key = key;
         this.value1 = value1;
         this.value2 = value2;
+        this.toggleValue = this.value1;
     }
 
     public DrawingView getView() {
         return editor.getActiveView();
     }
 
-    public DrawingEditor getEditor() {
-        return editor;
-    }
-
     @Override
     public void actionPerformed(ActionEvent evt) {
         // Determine the new value
         Iterator<Figure> i = getView().getSelectedFigures().iterator();
-        T toggleValue = value1;
+        toggleValue = value1;
         if (i.hasNext()) {
             Figure f = i.next();
             Object attr = f.get(key);
@@ -115,4 +113,6 @@ public class AttributeToggler<T> extends AbstractAction {
         };
         getView().getDrawing().fireUndoableEditHappened(edit);
     }
+
+    public T getToggleValue() {return toggleValue;}
 }
