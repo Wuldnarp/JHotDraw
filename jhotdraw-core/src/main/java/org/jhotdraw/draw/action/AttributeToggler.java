@@ -33,6 +33,7 @@ public class AttributeToggler<T> extends AbstractAction {
     private AttributeKey<T> key;
     private transient T value1;
     private transient T value2;
+    private T toggleValue;
 
     /**
      * Creates a new instance.
