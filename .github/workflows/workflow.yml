@@ -1,0 +1,23 @@
+name: workflow
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup of JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+      - name: run test
+        run: mvn test
+      - name: mvn install
+        run: mvn clean install -DskipTests
+      - name: build with maven
+        run: cd jhotdraw-samples/jhotdraw-samples-misc && mvn exec:java "-Dexec.mainClass=org.jhotdraw.samples.svg.Main"
